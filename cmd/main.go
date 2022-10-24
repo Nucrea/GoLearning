@@ -17,6 +17,8 @@ func main() {
 
 	e := echo.New()
 	e.GET("/", test)
+	
+	e.Logger.Fatal(e.Start(":1323"))
 }
 
 func test(c echo.Context) error {
