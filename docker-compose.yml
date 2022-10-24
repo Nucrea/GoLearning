@@ -8,6 +8,7 @@ services:
       dockerfile: ./dockerfile
     environment:
       - SERVER_PORT=16001
+      - POSTGRES_PORT=16002
     volumes:
       - ./cmd:/app/cmd
       - ./internal:/app/internal
@@ -15,3 +16,14 @@ services:
       - ./go.sum:/app/go.sum
     ports:
       - 16001:16001
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: app
+    volumes:
+      # - /postgresql/data:/var/lib/postgresql/data
+    ports:
+      - 16002:5432
