@@ -1,0 +1,15 @@
+version: '3'
+services:
+  gotest:
+    build:
+      context: ./
+      dockerfile: ./dockerfile
+    environment:
+      - SERVER_PORT=16001
+    volumes:
+      - ./cmd:/app/cmd
+      - ./internal:/app/internal
+      - ./go.mod:/app/go.mod
+      - ./go.sum:/app/go.sum
+    ports:
+      - 16001:16001
